@@ -25,6 +25,8 @@ Pour permettre l'éxecution d'un programme bash : `chmod u+x mon_script.sh` et p
 
 ### Exercice 2. Contrôle de mot de passe
 
+Le script suivant demande un mot de passe à l'utilisateur et vérifie s'il correspond au mot de passe codé en dur dans le programme (ici "milou").
+La commande `read -s -p` lit ce que rentre l'utilisateur sans montrer les caractères (`-s`) et en affichant un message (`-p`).
 
 <pre><code>
 #!/bin/bash
@@ -40,6 +42,7 @@ fi
 
 ### Exercice 3. Expressions rationnelles
 
+Le script suivant vérifie si l'argument que l'on passe au programme est bien un nombre réel. On utilise une fonction. Le "return" de la dernière fonction utilisée est stocké dans la variable `$?`. Pour tester l'égalité entre deux valeurs numériques, on utilise `-eq`.
 
 <pre><code>#!/bin/bash
 function is_number()
@@ -61,6 +64,8 @@ fi
 </code></pre>
 ### Exercice 4. Contrôle d’utilisateur
 
+Le code suivant vérifie si le premier argument que l'on passe au programme est bien dans la liste des utilisateurs. Si on ne passe pas d'argument, le programme indique la syntaxe à utiliser.
+Nous avons stocké tous les noms d'utilisateur dans un tableau avec la commande `cat /etc/passwd | awk -F: '{print $ 1}'`, puis nous avons vérifié si le nom passé par l'utilisateur était bien dans le tableau.
 
 <pre><code>#!/bin/bash
 if [ $# -eq 0 ]; then
@@ -85,7 +90,7 @@ fi
 </code></pre>
 ### Exercice 5. Factorielle
 
-
+Dans ce script, on calcule la factorielle d'un nombre passé en argument avec une simple itération.
 <pre><code>#!/bin/bash
 facto=1
 for i in $(seq 1 $1); do
@@ -95,7 +100,7 @@ echo $facto
 </code></pre>
 ### Exercice 6. Le juste prix
 
-
+Ce code est le classique jeu du juste prix. Le programme choisit un nombre entre 0 et 1000 et l'utilisateur doit deviner le nombre.
 <pre><code>#!/bin/bash
 nombre_choisi=$((( RANDOM % 1000 ) +1 ))
 nombre_user=-1
@@ -112,6 +117,7 @@ fi
 </code></pre>
 ### Exercice 7. Statistiques
 
+Ce script calcule le minimum, le maximum et la moyenne des arguments passés au programme.
 
 <pre><code>#!/bin/bash
 max=$1 
